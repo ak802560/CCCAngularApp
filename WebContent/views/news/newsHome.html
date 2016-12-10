@@ -1,0 +1,20 @@
+<div class="mycontainer" ng-controller="newsHomeController">
+        <div class="left-nav">
+            <accordion close-others="true" >
+                  <accordion-group  is-open="isopen"
+                      ng-repeat="item in items" 
+                      ng-controller="itemsController">
+                      <accordion-heading >
+                        {{item.desc}} 
+                          <i class="pull-right glyphicon" 
+                                ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                      </accordion-heading>
+
+                      <div ng-repeat="subitem in item.subitems">{{subitem.desc}}</div>
+                  </accordion-group>
+              </accordion>
+        </div>
+
+        <div class="content">
+        </div>
+    </div>

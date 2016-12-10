@@ -1,0 +1,39 @@
+<div class="row">
+		<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+	<div class="col-xs-12 block block-title block-title-clarity">
+		<div class="">Clarity Time</div>
+	</div>
+</div>
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+<div class="row" ng-repeat="timesheet in timesheets | orderBy:'-startDate'" style="background-color: #FFFFFF;" ng-click="goToForm(timesheet.periodId)">
+
+	
+
+	<div class="col-xs-7 ">
+		<span class="glyphicon glyphicon-time" ></span>	
+		<span style="white-space:nowrap;">{{timesheet.startDate | date:'dd MMM'}}</span> - <span style="white-space:nowrap;">{{timesheet.endDate | date:'dd MMM'}}</span>
+	</div>
+	
+	<div class="col-xs-5 ">
+			<span style="white-space:nowrap;">{{timesheet.status}}</span> 
+	</div>
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+	
+	
+		
+	
+	
+</div>
+
+
+<div class="row">
+		<br>
+		<a href="#/clarity/testfab" class="btn btn-success">Details</a>
+		 
+</div>

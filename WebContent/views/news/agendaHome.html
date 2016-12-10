@@ -1,0 +1,51 @@
+
+
+
+
+<div ng-repeat="aData in agendaData" style="text-align:center;"> 
+  	<a href={{aData.agendaId}} class="btn btn-success" toggle="on">{{aData.account}} | {{aData.startDate}} | {{aData.startTime}}</a>
+		<div>&nbsp;</div>
+</div>
+
+
+<div   ng-repeat="aData in agendaData"> 
+
+<div overlay={{aData.agendaOvr}} style="background-color: red">
+  
+  <div class="modal-header">
+            <h3 class="modal-title">AGENDA</h3>
+        </div>
+       
+	
+		
+		
+		<div class="row ">
+		 <div  >&nbsp;</div> 
+		 <div class="col-xs-12 "  ><b>{{aData.account}}</b></div> 
+        
+		</div>		
+		<div class="row ">
+		<div  >&nbsp;</div> 
+		<div class="col-xs-12 "   ><b>{{aData.description}}</b></div>  
+        
+		</div>	
+        <div class="row ">
+		 <div  >&nbsp;</div> 
+		<div class="col-xs-12 "  ><b>{{aData.story}}</b></div>
+		</div>
+	
+	<div ng-controller="ratingCtrl">
+  
+   <div  >&nbsp;</div> 
+    <h4>Rating</h4>
+ <div ng-init="rating = star.rating + 1"></div>
+
+<div class="star-rating" star-rating rating-value="rating" data-max="10" on-rating-selected="rateFunction(rating)"></div>
+   
+	
+	</div>
+
+  
+</div>
+
+  </div>  

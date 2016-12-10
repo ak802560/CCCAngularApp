@@ -1,0 +1,69 @@
+    <header class="top" role="header">
+        <div class="container">
+            <a href="#" class="navbar-brand pull-left">
+                Clarity Time
+            </a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <nav class="navbar-collapse collapse" role="navigation">
+                <ul class="navbar-nav nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="" ng-click="goToMain()">Clarity Time</div>
+	</div>
+</div>
+
+<div class="row row-small">
+	<div class="col-xs-2 block" style="text-align:center;">
+		<span class="glyphicon glyphicon-home" ng-click="goToMain()"></span>
+		
+	</div>
+	<div class="col-xs-10 block">
+		<span style="white-space:nowrap;">
+			week&nbsp;
+			<select ng-model='weekIndex'>
+				<option ng-repeat="timesheet in timesheets | orderBy:'-startDate'" value='{{timesheets.indexOf(timesheet)}}' ng-selected='timesheets.indexOf(timesheet)== weekIndex'>
+					{{timesheet.startDate | date: 'dd MMM'}} - {{timesheet.endDate | date:'dd MMM'}}
+				</option>
+			</select>
+		</span>
+	</div>
+</div>
+
+<div class="row row-small">
+	<div class="col-xs-1 block" >
+	</div>
+	<div class="col-xs-1 block" ng-repeat="day in days">
+		{{day}}
+	</div>
+</div>
+
+<div class="row row-small" ng-repeat="project in timesheets[weekIndex].projects">
+	<div class="col-xs-1 block" >
+		{{project}}
+	</div>
+	<div class="col-xs-1" ng-repeat="day in days">
+		<input type="number" min="0" max="24" ng-model="uren"/>
+	</div>
+</div>
+
+<div class="row row-small" >
+	<div class="col-xs-6 block" style="padding:0">
+		<button class="btn btn-block" ng-click="goToMain()">Cancel</a>
+	</div>
+	<div class="col-xs-6 block" style="padding:0">
+		<button class="btn btn-block">Submit</button>
+	</div>
+</div>
+
+
+
+

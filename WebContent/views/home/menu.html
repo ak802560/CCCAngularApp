@@ -1,0 +1,35 @@
+<div class="row menu">
+	<div class="col-xs-6 col-ys-4 col-sm-3 col-md-2 block block-white">
+		<img ng-show="user.pictureUrl" class="menu-picture photo-block" ng-src="{{user.pictureUrl}}" />
+		<img ng-hide="user.pictureUrl" class="menu-picture photo-block" src="http://www.familieslager.nl/capathon/lion2.jpg" />
+	</div>
+	<div class="col-xs-6 col-ys-8 col-sm-9 col-md-10 block block-white">
+		<a ng-href="#/module/profile" class="icon icon-profile">
+			<span style="color:white">{{user.welcomeNote}}</span><br>
+			<span style="color:white">{{user.country}}</span><br>
+			<span style="color:white">{{user.place}}</span>
+			<span style="color:white">{{human.name}}</span>
+			
+		</a>
+	</div>
+	
+</div>
+
+<div class="row menu" ng-init="loadModules()">
+	<div ng-repeat="module in modules | moduleFilter:'order'" ng-model="modules" ng-if="module.active" class="col-xs-6 col-sm-4 col-md-3 col-lg-2 block block-menu block-{{color($index)}}">
+		<a ng-href="{{module.href}}" class="icon modules" style="background:none;">
+			<div>&nbsp;</div>
+			<img height="100px" ng-src="{{module.image}}" alt="icon" />
+			<div>{{module.name}}</div>
+		</a>
+	</div>
+</div>
+
+<div class="col-xs-6 col-ys-8 col-sm-9 col-md-10 block block-white" ng-repeat="eData in empData">
+		
+			<span style="color:white">{{eData.firstName}}</span><br>
+			<span style="color:white">{{eData.lastName}}</span><br>
+			<span style="color:white">{{eData.email}}</span>
+			<span style="color:white">{{eData.id}}</span>
+			
+	</div>

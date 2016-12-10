@@ -1,0 +1,162 @@
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+<div class="row row-small">
+	<div class="col-xs-2 block" style="text-align:center;">
+		<span class="glyphicon glyphicon-home" ng-click="goToMain()"></span>
+		
+	</div>
+	<div class="col-xs-10 block">
+		<span style="white-space:nowrap;">
+			week&nbsp;
+			<select ng-model='weekIndex'>
+				<option ng-repeat="timesheet in timesheets | orderBy:'-startDate'" value='{{timesheets.indexOf(timesheet)}}' ng-selected='timesheets.indexOf(timesheet)== weekIndex'>
+					{{timesheet.startDate | date: 'dd MMM'}} - {{timesheet.endDate | date:'dd MMM'}}
+				</option>
+			</select>
+		</span>
+	</div>
+</div>
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+<!--
+<div class="row row-small" ng-repeat="project in timesheets[weekIndex].projects">
+	<div class="col-xs-7 block" >
+		<input type="checkbox" value="{{project}}"/>&nbsp;{{project}}
+	</div>
+</div>  -->
+
+
+<div class="row row-small" ng-repeat="pData in timesheets[weekIndex].projectsData">
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+	<div class="col-xs-6 block" >
+		<input type="radio"  name="idProjects" id="idProjects" ng-click="onSelectProject(pData, timesheets[weekIndex])" />&nbsp;{{pData.projectdesc}}
+	</div>
+	<div class="col-xs-6 block" >
+		&nbsp;{{pData.projectcode}}
+	</div>
+</div>
+
+
+
+
+<div >
+   <!-- <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Your Project Tasks here!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <div ng-repeat="item in items">
+
+<input id="{{item.pDesc}}" type="checkbox" value="{{item.pDesc}}" ng-checked="selection.indexOf(item.pDesc) > -1" ng-click="toggleSelection(item)" />              {{ item.pDesc }}
+			  </div>
+            </ul>
+            
+        </div>
+		Selected Project Tasks: &nbsp;
+		<div ng-repeat="selctdItem in selection" class="selected-item">
+		{{selctdItem.pDesc}}&nbsp;
+		</div>
+		
+		
+		
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+-->
+   	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+  	<a href="#overlay1" class="btn btn-success" toggle="on">Add Tasks</a>
+	<button class="btn btn-primary" ng-click="showSelectedTasks()">Submit</button>
+
+</div>
+
+
+
+
+<div overlay="overlay1" style="background-color: red">
+  
+  <div class="modal-header">
+            <h3 class="modal-title">Add Your Tasks.</h3>
+        </div>
+       	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+<!--
+	   <div class="row"  ng-repeat="pitemP in selPrjData">
+         <div class="col-xs-6 "  ><b>Project Name: {{pitemP.projectdesc}}</b></div>  
+         <div class="col-xs-6 "  ><b>Project Code: {{pitemP.projectcode}}</b></div>              
+        </div>
+	-->	
+		
+		<div   ng-repeat="pTasks in selPrjData"> 
+		
+		<div  ng-repeat="tasks in pTasks.projectstasks">
+			<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+		<div class="row ">
+		 <div class="col-xs-2 claritycheckbox"  ><b><input type="checkbox"  ng-checked="selPrjData.indexOf(tasks.taskdesc) > -1" ng-click="toggleTasksSelection(tasks, selPrjData)" /></b></div>  
+         <div class="col-xs-5 "  ><b>{{tasks.taskdesc}}</b></div>  
+         <div class="col-xs-5 "  ><b>{{tasks.taskcode}}</b></div>
+		</div>		
+		</div>
+      </div>  
+		
+	
+<div class="row">
+<div class="row">
+  <p toggle="off" bubble target="overlay1">
+    <span class="btn btn-primary">Submit</span>
+  </p> 
+  </div>
+</div>
+  
+</div>
+
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">&nbsp;</div>
+</div>
+
+<div class="row" ng-repeat="selctdTaskItem in selectedTasks" >
+<div class="col-xs-12">
+<div class= "row ">
+		<b>Task:</b> {{selctdTaskItem.taskdesc}}
+		
+		<div class="" ng-repeat="days in selctdTaskItem.weekdays">
+		<div class= "row " ng-show="days.MOND">
+	<div class="col-xs-6 "  >{{days.MOND}} </div> <div class="col-xs-6 "><style>input[type="number"] {   width:50px; } <input type="number" numbers-only="numbers-only" id="MOND{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.MonHours" ng-keyup="enteredHours()"/>  </style></div></div>
+	
+	<div class= "row" ng-show="days.TUES">
+	<div class="col-xs-6 "  >{{days.TUES}} </div> <div class="col-xs-6 ">  <input type="number" numbersOnly id="TUES{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.TueHours" ng-keyup="enteredHours()"/></div>
+	</div><div class= "row" ng-show="days.WEDS" >
+	<div class="col-xs-6 " >{{days.WEDS}}  </div> <div class="col-xs-6 "> <input type="number" id="WEDS{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.WedHours" ng-keyup="enteredHours()"/></div>
+	</div><div class= "row" ng-show="days.THUR" >
+	<div class="col-xs-6 " >{{days.THUR}}  </div> <div class="col-xs-6 "> <input type="number" id="THUR{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.ThrHours" ng-keyup="enteredHours()"/></div>
+	</div><div class= "row" ng-show="days.FRID" >
+	<div class="col-xs-6 " >{{days.FRID}} </div> <div class="col-xs-6 ">  <input type="number" id="FRID{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.FriHours" ng-keyup="enteredHours()"/></div>
+	</div><div class= "row" ng-show="days.SATR">
+	<div class="col-xs-6 "  >{{days.SATR}}  </div> <div class="col-xs-6 "> <input type="number" id="SATR{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.SatHours" ng-keyup="enteredHours()"/></div>
+	</div>
+	<div class= "row" ng-show="days.SUND">
+	<div class="col-xs-6 "  >{{days.SUND}}  </div> <div class="col-xs-6 "> <input type="number" id="SUND{{selctdTaskItem.taskcode}}" SIZE ="1" ng-model="days.SunHours" ng-keyup="enteredHours()"/></div>
+	
+		</div> 
+		
+</div>
+<div class= "row">
+		<div class="col-xs-6 " >Total Hours</div><div class="col-xs-6 "><b>  {{selctdTaskItem.totalhours}} </b></div></div>
+	</div></div></div>	
+	
+
+

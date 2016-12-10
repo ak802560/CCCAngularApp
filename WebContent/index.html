@@ -1,0 +1,113 @@
+<!doctype html>
+<html ng-app="capapp">
+  <head>
+    
+    
+    <link rel="stylesheet" href="lib/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css" />
+	<link rel="stylesheet" href="lib/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="app.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/index.css">  -->
+	
+
+<title>CCC</title>
+  </head>
+  <body ng-controller="capAppContoller" ng-class="has-sidebar-left">
+
+    <div class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar">
+      <div class="scrollable">
+        <div class="scrollable-content">
+          <div class="list-group" toggle="off" bubble target="mainSidebar">
+		    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-th"></span>&nbsp;Home</a>
+			<a class="list-group-item" href="#/contacts"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Emergency Contacts</a>
+            <a class="list-group-item" href="#/agenda/agendaHome"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Agenda</a>
+            <a class="list-group-item" href="#/profile"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Send Mail </a>
+            <a class="list-group-item" href="#/alerts/list"><span class="glyphicon glyphicon-warning-sign"></span>&nbsp;Alerts<span class="badge">15</span></a>
+			<a class="list-group-item" href="#/visiting/list"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;Sightseeing</a>
+			<a class="list-group-item" href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;My Stay</a>
+			<a class="list-group-item" href="#/news/newsHome"><span class="glyphicon glyphicon-euro"></span>&nbsp;Cap Updates</a>
+			<a class="list-group-item" href="#"><span class="glyphicon glyphicon-plane"></span>&nbsp;My Travel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="app">
+
+        <div class="navbar navbar-fixed-top">
+          <div class="container header">
+            <div class="row row-medium  ">
+              <div class="col-xs-3 col-sm-2 col-md-1 block logo" style="text-align:center; padding:0;" ng-click="toggle('mainSidebar')">
+                <img src="images/logo.png" alt="logo" style="height: 70px;"/>
+              </div>
+              <div class="col-xs-9 col-ys-10  col-sm-10 col-md-11 block block-color2 date">
+                <b><span style="color:white">{{day}}</span></b>
+                <span style="color:white">{{date}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--  <div class="navbar navbar-fixed-bottom" ng-show="showFooter">
+          <div class="container footer">
+            <div class="row row-medium">
+              <div class="col-xs-3 col-ys-2 col-sm-2 col-md-1 block block-color1"><a class="button button-back" href="javascript:history.go(-1)"></a></div>
+              <div class="col-xs-6 col-ys-8 col-sm-8 col-md-10 block block-color0"><a class="button button-menu" href="#/"></a></div>
+              <div class="col-xs-3 col-ys-2 col-sm-2 col-md-1 block block-color2"><a class="button button-logoff" href="#/authentication"></a></div>
+            </div>
+          </div>
+        </div>
+		-->
+		
+        <div class="scrollable" style="background-color:#1E90FF">
+		<div class="scrollable-content">
+		<br><br><br><br>
+		<div class="container main;">
+		
+          <div  ng-view ></div>
+        </div>
+      </div>
+	  </div>
+	  </div>
+
+
+     
+
+    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript" src="lib/angular/angular.js"></script>
+    <script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="lib/angular-mocks/angular-mocks.js"></script>
+	<script type="text/javascript" src="lib/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+	<script type="text/javascript" src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
+	
+
+    <script type="text/javascript" src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+    
+    <script type="text/javascript" src="lib/ngAutocomplete/src/ngAutocomplete.js"></script>
+	
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="app.js"></script>
+	<script src="mobile-angular-ui.gestures.js"></script>
+	<script src="mobile-angular-ui.core.js"></script>
+	<!--
+	   <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		-->
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.min.js"></script>
+	
+
+   <!-- <script type="text/javascript" src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript">
+      app.initialize();
+    </script>  -->
+
+  </body>
+</html>
